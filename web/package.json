@@ -7,7 +7,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint . --report-unused-disable-directives --max-warnings 0"
+    "lint": "ESLINT_USE_FLAT_CONFIG=true npx eslint . --report-unused-disable-directives --max-warnings 0",
+    "lint:fix": "eslint . --fix",
+    "prettier": "prettier . --check --ignore-unknown",
+    "prettier:fix": "prettier . -w"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.0",
