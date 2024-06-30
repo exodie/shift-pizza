@@ -2,10 +2,11 @@
 
 ### Header
 
-- [-] Logo
-- [-] Links button (profile, orders, etc...)
-- [-] Margin & Paddings of navbar (inside element of header), `240px` left & right; `24px` top & bottom
-- [-] Position of elements in navbar (3 left, 2 right)
+- [+] Logo
+- [+] Links button (profile, orders, etc...)
+- [+] Margin & Paddings of navbar (inside element of header), `240px` left & right; `24px` top & bottom
+- [+] Position of elements in navbar (3 left, 2 right)
+- [-] Responsive burger menu on mobile devices
 
 ### Products list
 

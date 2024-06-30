@@ -4,7 +4,7 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 3333",
     "build": "next build",
     "start": "next start",
     "lint": "ESLINT_USE_FLAT_CONFIG=true npx eslint . --report-unused-disable-directives --max-warnings 0",
@@ -13,6 +13,7 @@
     "prettier:fix": "prettier . -w"
   },
   "dependencies": {
+    "@radix-ui/react-slot": "^1.0.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "lucide-react": "^0.394.0",
