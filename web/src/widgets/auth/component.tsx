@@ -1,3 +1,7 @@
+'use client'
+
+import { useEffect, useState } from 'react'
+
 import { TextLinks } from '../navbar/ui/links'
 
 import { Button } from '~/shared/ui/button'
@@ -13,6 +17,19 @@ import {
 import { Input } from '~/shared/ui/input'
 
 export function AuthDialog() {
+  const [codeStatus, setCodeStatus] = useState<boolean>(false)
+  const [seconds, setSeconds] = useState<number>(0)
+  const [startTimer, setStartTimer] = useState<boolean>(false)
+
+  useEffect(() => {
+    if (seconds >= 0) {
+      const timerId = setTimeout(() => setSeconds(seconds - 1), 1000)
+      return () => clearTimeout(timerId)
+    }
+
+    setStartTimer(false)
+  }, [seconds])
+
   return (
     <Dialog>
       <DialogTrigger>
@@ -47,21 +64,48 @@ export function AuthDialog() {
         />
 
         {/* TODO: Динамическое отображение */}
-        {/* <Input
-          type="number"
-          className="text-color-tertiary text-base"
-          placeholder="Проверочный код"
-        /> */}
+        {codeStatus && (
+          <Input
+            type="number"
+            className="text-color-tertiary text-base"
+            placeholder="Проверочный код"
+          />
+        )}
 
         <DialogFooter>
           <div className="w-full flex flex-col gap-y-4">
-            <Button className="w-full text-base font-semibold" size="lg">
+            <Button
+              className="w-full text-base font-semibold"
+              size="lg"
+              onClick={() => {
+                setCodeStatus(true)
+
+                if (!startTimer) {
+                  setSeconds(60)
+                  setStartTimer(true)
+                }
+              }}
+            >
               Продолжить
             </Button>
             {/* TODO: Динамическое отображение */}
-            {/* <p className="max-w-xs text-color-quartenery text-sm font-normal">
-              Запросить код повторно можно через {'00'} секунд
-            </p> */}
+            {codeStatus && startTimer && (
+              <p className="max-w-xs text-color-quartenery text-sm font-normal">
+                Запросить код повторно можно через {seconds} секунд
+              </p>
+            )}
+            {codeStatus && !startTimer && (
+              <Button
+                className="text-base font-semibold text-color-secondary"
+                variant="ghost"
+                onClick={() => {
+                  setSeconds(60)
+                  setStartTimer(true)
+                }}
+              >
+                Запросить код еще раз
+              </Button>
+            )}
           </div>
         </DialogFooter>
       </DialogContent>
