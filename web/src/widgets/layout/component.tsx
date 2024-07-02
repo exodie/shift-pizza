@@ -7,7 +7,7 @@ export function LayoutWidget({ children }: PropsWithChildren) {
     <div>
       <HeaderWidget />
 
-      <main className="px-60 py-12 mx-auto min-h-screen">{children}</main>
+      <main className="py-12 w-full">{children}</main>
     </div>
   )
 }
