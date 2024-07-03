@@ -63,7 +63,6 @@ export function AuthDialog() {
           placeholder="Телефон"
         />
 
-        {/* TODO: Динамическое отображение */}
         {codeStatus && (
           <Input
             type="number"
@@ -88,7 +87,6 @@ export function AuthDialog() {
             >
               Продолжить
             </Button>
-            {/* TODO: Динамическое отображение */}
             {codeStatus && startTimer && (
               <p className="max-w-xs text-color-quartenery text-sm font-normal">
                 Запросить код повторно можно через {seconds} секунд
